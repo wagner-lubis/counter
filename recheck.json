@@ -1,0 +1,21 @@
+{
+  "project_uid": "etgIbtpOxohfGg52l76F",
+  "project_name": "counter",
+  "targets": {
+    "smoke_jasper": {
+      "destinations": {
+        "db_path": "~/.recheck/results.db",
+        "fv_db_base_dir": "~/.recheck/fv_dbs/",
+        "report_path": "./report.html",
+        "coverage_report_path": "./coverage_report"
+      },
+      "formal_tool": "jasper_gold",
+      "tcl_config": {
+        "default": "verification_scripts/jasper/default.tcl",
+        "scenario_8_bit_upperbound_255": "verification_scripts/jasper/scenario_8_bit_upperbound_255.tcl"
+      },
+      "scenario_assertion_matrix_path": "./sam.csv",
+      "teams_webhook_url": null
+    }
+  }
+}

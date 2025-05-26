@@ -1,0 +1,11 @@
+# Ignore logs directory
+logs/
+
+# Ignore coverage reports
+coverage_report/
+
+jgproject/
+
+default.onespin/
+
+vcf_project/
