@@ -16,6 +16,51 @@
       },
       "scenario_assertion_matrix_path": "./sam.csv",
       "teams_webhook_url": null
+    },
+    "smoke_onespin": {
+      "destinations": {
+        "db_path": "~/.recheck/results.db",
+        "fv_db_base_dir": "~/.recheck/fv_dbs/",
+        "report_path": "./report.html",
+        "coverage_report_path": "./coverage_report"
+      },
+      "formal_tool": "onespin",
+      "tcl_config": {
+        "default": "verification_scripts/onespin/default.tcl",
+        "scenario_8_bit_upperbound_255": "verification_scripts/onespin/scenario_8_bit_upperbound_255.tcl"
+      },
+      "scenario_assertion_matrix_path": "./sam.csv",
+      "teams_webhook_url": null
+    },
+    "smoke_vcf": {
+      "destinations": {
+        "db_path": "~/.recheck/results.db",
+        "fv_db_base_dir": "~/.recheck/fv_dbs/",
+        "report_path": "./report.html",
+        "coverage_report_path": "./coverage_report"
+      },
+      "formal_tool": "vcf",
+      "tcl_config": {
+        "default": "verification_scripts/vcf/default.tcl",
+        "scenario_8_bit_upperbound_255": "verification_scripts/vcf/scenario_8_bit_upperbound_255.tcl"
+      },
+      "scenario_assertion_matrix_path": "./sam.csv",
+      "teams_webhook_url": null
+    },
+    "smoke_yosys": {
+      "destinations": {
+        "db_path": "~/.recheck/results.db",
+        "fv_db_base_dir": "~/.recheck/fv_dbs/",
+        "report_path": "./report.html",
+        "coverage_report_path": "./coverage_report"
+      },
+      "formal_tool": "yosys",
+      "tcl_config": {
+        "default": "verification_scripts/yosys/default",
+        "scenario_8_bit_upperbound_255": "verification_scripts/yosys/scenario_8_bit_upperbound_255"
+      },
+      "scenario_assertion_matrix_path": "./sam.csv",
+      "teams_webhook_url": null
     }
   }
 }
