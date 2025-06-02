@@ -1,0 +1,13 @@
+stages:
+  - recheck
+
+#printf "gitlab+deploy-token-8253976:gldt-NY_DAdZYHD1xbx5XUixG" | openssl base64 -A
+#Z2l0bGFiK2RlcGxveS10b2tlbi04MjUzOTc2OmdsZHQtTllfREFkWllIRDF4Yng1WFVpeEc=
+variables:
+  DOCKER_AUTH_CONFIG: '{"auths":{"registry.gitlab.com":{"auth":"Z2l0bGFiK2RlcGxveS10b2tlbi04MjUzOTc2OmdsZHQtTllfREFkWllIRDF4Yng1WFVpeEc="}}}'
+
+recheck:
+  image: registry.gitlab.com/lubis1/eda-team/recheck/cli/recheck-onespin
+  stage: recheck
+  script:
+    - recheck
