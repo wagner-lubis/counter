@@ -15,4 +15,6 @@ recheck:
   image: registry.gitlab.com/lubis1/eda-team/recheck/cli/recheck-onespin
   stage: recheck
   script:
-    - recheck
+    - sleep 1h
+  variables:
+    GIT_STRATEGY: none
