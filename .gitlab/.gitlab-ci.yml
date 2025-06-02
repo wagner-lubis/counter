@@ -15,4 +15,5 @@ recheck:
   image: registry.gitlab.com/lubis1/eda-team/recheck/cli/recheck-onespin
   stage: recheck
   script:
-    - recheck
+    - recheck run smoke_onespin
+    - recheck run smoke_jasper
