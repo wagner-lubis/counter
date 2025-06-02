@@ -20,3 +20,4 @@ recheck:
   artifacts:
     paths:
       - logs
+    when: always
