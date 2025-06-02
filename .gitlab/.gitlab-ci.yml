@@ -6,6 +6,11 @@ stages:
 variables:
   DOCKER_AUTH_CONFIG: '{"auths":{"registry.gitlab.com":{"auth":"Z2l0bGFiK2RlcGxveS10b2tlbi04MjUzOTc2OmdsZHQtTllfREFkWllIRDF4Yng1WFVpeEc="}}}'
 
+default:
+  tags:
+    - formal-verification
+    - 300g
+
 recheck:
   image: registry.gitlab.com/lubis1/eda-team/recheck/cli/recheck-onespin
   stage: recheck
