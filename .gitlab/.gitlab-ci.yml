@@ -17,3 +17,6 @@ recheck:
   script:
     - recheck run smoke_onespin -e
     - recheck run smoke_jasper -e
+  artifacts:
+    paths:
+      - logs
