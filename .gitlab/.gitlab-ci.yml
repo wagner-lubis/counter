@@ -14,4 +14,4 @@ recheck-jasper:
   extends: [".recheck-jasper"]
   stage: recheck
   script:
-    - recheck run smore_jasper -e
+    - recheck run smoke_jasper -e
