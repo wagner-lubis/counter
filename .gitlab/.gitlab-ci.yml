@@ -50,7 +50,8 @@ recheck:
       libasound2t64 \
       libgl1 \
       && apt-get clean
-    - recheck run smoke_onespin -e
+    - recheck run smoke_onespin --keep
+    - sleep 1h
     - recheck run smoke_jasper -e
   artifacts:
     paths:
