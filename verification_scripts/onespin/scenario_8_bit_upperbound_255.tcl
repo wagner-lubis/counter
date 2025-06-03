@@ -31,6 +31,7 @@ set_session_option -naming_style sv
 
 # Load Setup Database
 set setup_database_name setup.onespin
+set use_setup_database 1
 if {$use_setup_database && [file isdirectory $setup_database_name]} {
     cd $script_path
     load_database -force $setup_database_name
