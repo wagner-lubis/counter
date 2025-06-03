@@ -1,57 +1,17 @@
+include:
+  - component: $CI_SERVER_FQDN/devops/verification-components/recheck@1
+
 stages:
   - recheck
 
-variables:
-  DOCKER_AUTH_CONFIG: $RECHECK_IMAGE_AUTH
-
-default:
-  tags:
-    - formal-verification
-    - 300g
-
 recheck-onespin:
-  image: registry.gitlab.com/lubis1/eda-team/recheck/cli/recheck-onespin
+  extends: [".recheck-onespin"]
   stage: recheck
   script:
-    - |
-      apt-get update && apt-get upgrade -y && apt-get install -y \
-      curl \
-      gpg \
-      libx11-6 \
-      libglib2.0-0 \
-      git \
-      ruby \
-      fontconfig \
-      libx11-xcb1 \
-      libxcb-icccm4 \
-      libxcb-image0 \
-      libxcb-shm0 \
-      libxcb-keysyms1 \
-      libxcb-randr0 \
-      libxcb-render0 \
-      libxcb-render-util0 \
-      libxcb-shape0 \
-      libxcb-sync1 \
-      libxcb-xfixes0 \
-      libxcb-xinerama0 \
-      libxcb-xkb1 \
-      libxkbcommon0 \
-      libxkbcommon-x11-0 \
-      libnss3 \
-      libxcomposite1 \
-      libxdamage1 \
-      libxfixes3 \
-      libxrender1 \
-      libxrandr2 \
-      libxtst6 \
-      libdbus-1-3 \
-      libasound2t64 \
-      libgl1 \
-      && apt-get clean
     - recheck run smoke_onespin -e
 
 recheck-jasper:
-  image: registry.gitlab.com/lubis1/eda-team/recheck/cli/recheck-jasper
+  extends: [".recheck-jasper"]
   stage: recheck
   script:
-    - recheck run smoke_jasper -e
+    - recheck run smore_jasper -e
