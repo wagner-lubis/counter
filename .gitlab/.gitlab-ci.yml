@@ -1,8 +1,6 @@
 stages:
   - recheck
 
-#printf "gitlab+deploy-token-8253976:gldt-NY_DAdZYHD1xbx5XUixG" | openssl base64 -A
-#Z2l0bGFiK2RlcGxveS10b2tlbi04MjUzOTc2OmdsZHQtTllfREFkWllIRDF4Yng1WFVpeEc=
 variables:
   DOCKER_AUTH_CONFIG: $RECHECK_IMAGE_AUTH
 
@@ -11,7 +9,7 @@ default:
     - formal-verification
     - 300g
 
-recheck:
+recheck-onespin:
   image: registry.gitlab.com/lubis1/eda-team/recheck/cli/recheck-onespin
   stage: recheck
   script:
@@ -50,10 +48,10 @@ recheck:
       libasound2t64 \
       libgl1 \
       && apt-get clean
-    - recheck run smoke_onespin --keep
-    - sleep 1h
+    - recheck run smoke_onespin -e
+
+recheck-jasper:
+  image: registry.gitlab.com/lubis1/eda-team/recheck/cli/recheck-jasper
+  stage: recheck
+  script:
     - recheck run smoke_jasper -e
-  artifacts:
-    paths:
-      - logs
-    when: always
