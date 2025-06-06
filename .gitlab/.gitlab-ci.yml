@@ -3,6 +3,7 @@ include:
 
 stages:
   - recheck
+  - recheck_2
 
 recheck-onespin:
   extends: [".recheck-onespin"]
@@ -10,8 +11,15 @@ recheck-onespin:
   script:
     - recheck run smoke_onespin -e
 
-recheck-jasper:
+recheck-jasper-default:
   extends: [".recheck-jasper"]
   stage: recheck
+  script:
+    - recheck run smoke_jasper -e
+
+recheck-jasper-scenario_8_bit_upperbound_255:
+  extends: [".recheck-jasper"]
+  dependencies: [recheck-jasper-default]
+  stage: recheck_2
   script:
     - recheck run smoke_jasper -e
