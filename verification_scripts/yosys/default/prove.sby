@@ -43,11 +43,11 @@ setattr -set keep 1 t:$check t:$assert
 # If target is omitted, the source file is copied to the src directory of the workspace 
 # with the original file name, i.e., name is maintaned while directory hierarchy is removed.
 # This can be problematic if the source file uses relative paths, e.g., in `include statements.
-./rtl/counter.sv  ../../rtl/counter.sv
-./properties/fv_constraints.sv  ../../properties/fv_constraints.sv
-./properties/fv_scenarios.sv    ../../properties/fv_scenarios.sv
-./properties/fv_counter.sv      ../../properties/fv_counter.sv
-./properties/fv_top_aip.sv      ../../properties/fv_top_aip.sv
+./rtl/counter.sv  ../../../rtl/counter.sv
+./properties/fv_constraints.sv  ../../../properties/fv_constraints.sv
+./properties/fv_scenarios.sv    ../../../properties/fv_scenarios.sv
+./properties/fv_counter.sv      ../../../properties/fv_counter.sv
+./properties/fv_top_aip.sv      ../../../properties/fv_top_aip.sv
 
 
 # The following section creates a file 'formal.sv' in the src dir of the workspace with the verbatim content.
