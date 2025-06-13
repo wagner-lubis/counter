@@ -1,5 +1,7 @@
 include:
-  - component: $CI_SERVER_FQDN/devops/verification-components/recheck@1.1
+  - component: $CI_SERVER_FQDN/devops/verification-components/recheck@1.2
+    inputs:
+      artifacts_expire_in: "1 day"
 
 stages:
   - yosys
@@ -9,7 +11,7 @@ recheck-yosys:
   extends: [".recheck-yosys"]
   stage: yosys
   script:
-    - recheck run smoke_yosys -e
+    - recheck run yosys -e
 
 recheck-onespin:
   extends: [".recheck-onespin"]
@@ -17,12 +19,12 @@ recheck-onespin:
     - "recheck-yosys"
   stage: big-eda
   script:
-    - recheck run smoke_onespin -e
+    - recheck run onespin -e
 
-recheck-jasper-default:
+recheck-jasper:
   extends: [".recheck-jasper"]
   dependencies:
     - "recheck-yosys"
   stage: big-eda
   script:
-    - recheck run smoke_jasper -e
+    - recheck run jasper -e
