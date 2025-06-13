@@ -3,30 +3,26 @@ include:
 
 stages:
   - yosys
-  - recheck
-  - recheck_2
+  - big-eda
 
 recheck-yosys:
   extends: [".recheck-yosys"]
-  stage: recheck
+  stage: yosys
   script:
     - recheck run smoke_yosys -e
 
 recheck-onespin:
   extends: [".recheck-onespin"]
-  stage: recheck
+  dependencies:
+    - "recheck-yosys"
+  stage: big-eda
   script:
     - recheck run smoke_onespin -e
 
 recheck-jasper-default:
   extends: [".recheck-jasper"]
-  stage: recheck
-  script:
-    - recheck run smoke_jasper -e
-
-recheck-jasper-scenario_8_bit_upperbound_255:
-  extends: [".recheck-jasper"]
-  dependencies: [recheck-jasper-default]
-  stage: recheck_2
+  dependencies:
+    - "recheck-yosys"
+  stage: big-eda
   script:
     - recheck run smoke_jasper -e
