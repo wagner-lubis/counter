@@ -2,8 +2,15 @@ include:
   - component: $CI_SERVER_FQDN/devops/verification-components/recheck@1
 
 stages:
+  - yosys
   - recheck
   - recheck_2
+
+recheck-yosys:
+  extends: [".recheck-yosys"]
+  stage: recheck
+  script:
+    - recheck run smoke_yosys -e
 
 recheck-onespin:
   extends: [".recheck-onespin"]
