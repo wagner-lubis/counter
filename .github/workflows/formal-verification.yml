@@ -2,7 +2,7 @@ name: Formal Verification
 
 on:
   push:
-    branches: [ "main", "github-workflows" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
