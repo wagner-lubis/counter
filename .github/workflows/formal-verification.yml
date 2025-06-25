@@ -1,0 +1,86 @@
+name: Formal Verification
+
+on:
+  push:
+    branches: [ "main", "github-workflows" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  recheck-yosys:
+    runs-on: self-hosted  # Use self-hosted runner with recheck installed
+    name: Yosys Formal Verification
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Yosys verification
+        run: recheck run yosys -e
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: yosys-results
+          path: |
+            results.db
+            report.html
+            coverage_report/
+            fv_dbs/
+          retention-days: 1
+
+  recheck-onespin:
+    runs-on: self-hosted  # Use self-hosted runner with recheck installed
+    needs: recheck-yosys
+    name: OneSpin Formal Verification
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download Yosys results
+        uses: actions/download-artifact@v4
+        with:
+          name: yosys-results
+          path: .
+
+      - name: Run OneSpin verification
+        run: recheck run onespin -e
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: onespin-results
+          path: |
+            results.db
+            report.html
+            coverage_report/
+            fv_dbs/
+          retention-days: 1
+
+  recheck-jasper:
+    runs-on: self-hosted  # Use self-hosted runner with recheck installed
+    needs: recheck-yosys
+    name: Jasper Gold Formal Verification
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download Yosys results
+        uses: actions/download-artifact@v4
+        with:
+          name: yosys-results
+          path: .
+
+      - name: Run Jasper Gold verification
+        run: recheck run jasper -e
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: jasper-results
+          path: |
+            results.db
+            report.html
+            coverage_report/
+            fv_dbs/
+          retention-days: 1 
